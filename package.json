@@ -1,0 +1,23 @@
+{
+  "name": "google-sheets-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dashboard to list Google Sheets for a signed-in user",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm --workspace server run dev\" \"npm --workspace client run dev\"",
+    "start": "npm --workspace server run start",
+    "build": "npm --workspace client run build",
+    "lint": "concurrently \"npm --workspace server run lint\" \"npm --workspace client run lint\"",
+    "test": "concurrently \"npm --workspace server run test\" \"npm --workspace client run test\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
