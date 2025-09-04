@@ -103,7 +103,7 @@ app.post('/auth/client-config', (req, res) => {
   if (error) return res.status(400).json({ error: error.message });
   const redirectUri = value.redirectUri && value.redirectUri.length > 0
     ? value.redirectUri
-    : (process.env.GOOGLE_REDIRECT_URI || 'http://localhost:4000/auth/callback');
+    : (process.env.GOOGLE_REDIRECT_URI || 'https://bridgeloyaltydashboard.zeabur.app/auth/callback');
   req.session.clientConfig = { clientId: value.clientId, clientSecret: value.clientSecret, redirectUri };
   res.json({ ok: true, redirectUri });
 });
