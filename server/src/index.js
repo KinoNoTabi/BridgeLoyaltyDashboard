@@ -75,7 +75,7 @@ app.get('/auth/callback', async (req, res) => {
     const client = getOAuthClient(req);
     const { tokens } = await client.getToken(String(code));
     req.session.tokens = tokens;
-    const redirectTo = process.env.POST_LOGIN_REDIRECT || 'http://localhost:5173/';
+    const redirectTo = process.env.POST_LOGIN_REDIRECT || 'http://localhost:5173/';  
     res.redirect(redirectTo);
   } catch (e) {
     console.error(e);
@@ -97,8 +97,8 @@ app.post('/auth/client-config', (req, res) => {
       .uri()
       .optional()
       .allow('')
-      .default(process.env.GOOGLE_REDIRECT_URI || 'http://localhost:4000/auth/callback')
-  });
+      .default(process.env.GOOGLE_REDIRECT_URI || 'https://bridgeloyaltydashboard.zeabur.app/auth/callback') 
+  }); //http://localhost:4000/auth/callback
   const { value, error } = schema.validate(req.body || {}, { stripUnknown: true });
   if (error) return res.status(400).json({ error: error.message });
   const redirectUri = value.redirectUri && value.redirectUri.length > 0
